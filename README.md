@@ -56,6 +56,12 @@ lib/
     flutter run
     ```
 
+## 📲 Download
+
+You can download the latest version of the application for Android here:
+
+[**Download instagram_feed.apk**](https://github.com/Ektasingh987/instagram_feed_ui/raw/main/release/instagram_feed.apk)
+
 ## 📱 Build
 
 To create a release APK for Android:
