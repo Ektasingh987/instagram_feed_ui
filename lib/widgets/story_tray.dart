@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import '../models/user.dart';
+import '../screens/story_screen.dart';
 
 class StoryTray extends StatelessWidget {
   final List<User> stories;
@@ -30,7 +31,7 @@ class StoryTray extends StatelessWidget {
             return _buildYourStory();
           }
           final user = stories[index - 1];
-          return _buildStoryItem(user);
+          return _buildStoryItem(context, user);
         },
       ),
     );
@@ -87,35 +88,47 @@ class StoryTray extends StatelessWidget {
     );
   }
 
-  Widget _buildStoryItem(User user) {
+  Widget _buildStoryItem(BuildContext context, User user) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 8.0),
       child: Column(
         children: [
-          Container(
-            padding: const EdgeInsets.all(3),
-            decoration: BoxDecoration(
-              shape: BoxShape.circle,
-              gradient: const LinearGradient(
-                colors: [Colors.yellow, Colors.red, Colors.purple],
-                begin: Alignment.bottomLeft,
-                end: Alignment.topRight,
-              ),
-            ),
+          GestureDetector(
+            onTap: () {
+              if (user.hasStory) {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => StoryScreen(user: user),
+                  ),
+                );
+              }
+            },
             child: Container(
-              padding: const EdgeInsets.all(2),
-              decoration: const BoxDecoration(
-                color: Colors.white,
+              padding: const EdgeInsets.all(3),
+              decoration: BoxDecoration(
                 shape: BoxShape.circle,
+                gradient: const LinearGradient(
+                  colors: [Colors.yellow, Colors.red, Colors.purple],
+                  begin: Alignment.bottomLeft,
+                  end: Alignment.topRight,
+                ),
               ),
-              child: ClipOval(
-                child: CachedNetworkImage(
-                  imageUrl: user.profileImageUrl,
-                  width: 60,
-                  height: 60,
-                  fit: BoxFit.cover,
-                  placeholder: (context, url) => Container(color: Colors.grey[200]),
-                  errorWidget: (context, url, error) => const Icon(Icons.error),
+              child: Container(
+                padding: const EdgeInsets.all(2),
+                decoration: const BoxDecoration(
+                  color: Colors.white,
+                  shape: BoxShape.circle,
+                ),
+                child: ClipOval(
+                  child: CachedNetworkImage(
+                    imageUrl: user.profileImageUrl,
+                    width: 60,
+                    height: 60,
+                    fit: BoxFit.cover,
+                    placeholder: (context, url) => Container(color: Colors.grey[200]),
+                    errorWidget: (context, url, error) => const Icon(Icons.error),
+                  ),
                 ),
               ),
             ),

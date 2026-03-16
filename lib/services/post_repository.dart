@@ -1,18 +1,49 @@
 import 'dart:math';
 import '../models/post.dart';
 import '../models/user.dart';
+import '../models/story.dart';
 
 class PostRepository {
   final Random _random = Random();
 
-  // Mock Users
-  final List<User> _mockUsers = [
-    User(id: '1', username: 'instagram', profileImageUrl: 'https://images.unsplash.com/photo-1611262588024-d12430b98920?w=150', isVerified: true, hasStory: true),
-    User(id: '2', username: 'nature_lover', profileImageUrl: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150', hasStory: true),
-    User(id: '3', username: 'photography_hub', profileImageUrl: 'https://images.unsplash.com/photo-1554151228-14d9def656e4?w=150', isVerified: true),
-    User(id: '4', username: 'travel_diaries', profileImageUrl: 'https://images.unsplash.com/photo-1599566150163-29194dcaad36?w=150', hasStory: true),
-    User(id: '5', username: 'foodie_adventures', profileImageUrl: 'https://images.unsplash.com/photo-1527980965255-d3b416303d12?w=150'),
-  ];
+  // Mock Users with stories
+  late final List<User> _mockUsers;
+
+  PostRepository() {
+    _mockUsers = [
+      User(
+        id: '1',
+        username: 'instagram',
+        profileImageUrl: 'https://images.unsplash.com/photo-1611262588024-d12430b98920?w=150',
+        isVerified: true,
+        hasStory: true,
+        stories: [
+          Story(id: 's1', imageUrl: 'https://picsum.photos/seed/story1/1080/1920', createdAt: DateTime.now()),
+          Story(id: 's2', imageUrl: 'https://picsum.photos/seed/story2/1080/1920', createdAt: DateTime.now()),
+        ],
+      ),
+      User(
+        id: '2',
+        username: 'nature_lover',
+        profileImageUrl: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150',
+        hasStory: true,
+        stories: [
+          Story(id: 's3', imageUrl: 'https://picsum.photos/seed/story3/1080/1920', createdAt: DateTime.now()),
+        ],
+      ),
+      User(id: '3', username: 'photography_hub', profileImageUrl: 'https://images.unsplash.com/photo-1554151228-14d9def656e4?w=150', isVerified: true),
+      User(
+        id: '4',
+        username: 'travel_diaries',
+        profileImageUrl: 'https://images.unsplash.com/photo-1599566150163-29194dcaad36?w=150',
+        hasStory: true,
+        stories: [
+          Story(id: 's4', imageUrl: 'https://picsum.photos/seed/story4/1080/1920', createdAt: DateTime.now()),
+        ],
+      ),
+      User(id: '5', username: 'foodie_adventures', profileImageUrl: 'https://images.unsplash.com/photo-1527980965255-d3b416303d12?w=150'),
+    ];
+  }
 
   // Mock Image URLs for Posts
   final List<String> _mockImages = [

@@ -6,7 +6,9 @@ A premium, pixel-perfect replica of the Instagram Home Feed built using Flutter.
 
 - **Pixel-Perfect UI**: Closely follows the Instagram design system, including typography, iconography, and spacing.
 - **Dynamic Home Feed**: A vertically scrolling feed of posts with rich media support.
-- **Pinch-to-Zoom Overlay**: A sophisticated interaction that allows users to zoom into images. The image scales beyond its boundaries and overlays the entire UI, with a smooth snap-back animation on release.
+- **Pinch-to-Zoom Overlay**: A sophisticated interaction that allows users to zoom into images beyond their boundaries with a smooth snap-back animation.
+- **Login Screen**: A premium Instagram-style entry point with simulated authentication flow.
+- **Story Viewer**: Full-screen immersive stories with animated progress bars, automatic advancement, and tap-to-navigate interactions.
 - **Media Carousels**: Support for multiple images in a single post using a smooth carousel slider with page indicators.
 - **Story Tray**: A horizontal list of user stories at the top of the feed.
 - **Mock Data Layer**: A robust repository providing mock data for posts, users, and stories to simulate real-world content.

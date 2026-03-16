@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'providers/feed_provider.dart';
+import 'screens/login_screen.dart';
 import 'screens/home_screen.dart';
 
 void main() {
@@ -33,7 +34,7 @@ class MyApp extends StatelessWidget {
           behavior: SnackBarBehavior.floating,
         ),
       ),
-      home: const HomeScreen(),
+      home: const LoginScreen(),
     );
   }
 }
